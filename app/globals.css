@@ -1,26 +1,755 @@
 @import "tailwindcss";
 
+/* =========================================================
+   PETTY BENCH
+   Clean courtroom + extremely unnecessary meme energy
+   ========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #110806;
+  --foreground: #f3ead7;
+  --ink: #1b0e0a;
+  --mahogany: #351a13;
+  --paper: #e8dcc2;
+  --cream: #f3ead7;
+  --brass: #bf8c3b;
+  --brass-light: #d7aa55;
+  --muted: #9d8977;
+  --line: #68412a;
+  --danger: #d0674d;
+  --danger-dark: #35130d;
+  --success: #b9aa75;
+  --success-dark: #202015;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      #5a2c1d 0%,
+      #24110d 42%,
+      #110806 100%
+    );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "DM Mono", monospace;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.14;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 80px,
+      #8b5836 81px,
+      transparent 83px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 130px,
+      #160a07 131px,
+      transparent 134px
+    );
+  mix-blend-mode: screen;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Libre Baskerville", serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.text-cream {
+  color: var(--cream);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 25px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  flex-shrink: 0;
+  border: 1px solid var(--brass);
+  color: var(--brass);
+  font: 600 16px Oswald, sans-serif;
+  letter-spacing: 2px;
+}
+
+.site-header h1 {
+  font-size: 26px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.eyebrow {
+  color: var(--brass);
+  font: 500 10px Oswald, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.header-status {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #b88e42;
+  box-shadow: 0 0 9px #d7b05c;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 40px;
+  padding: 75px 0 51px;
+}
+
+.intro-row h2 {
+  margin-top: 13px;
+  font-size: clamp(37px, 5vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -1px;
+}
+
+.intro-row em {
+  color: var(--brass);
+  font-weight: 400;
+}
+
+.intro-copy {
+  max-width: 310px;
+  padding-bottom: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.filing-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  border: 1px solid var(--line);
+  background: rgba(26, 12, 8, 0.7);
+}
+
+.form-panel,
+.evidence-panel {
+  padding: 34px 38px;
+}
+
+.evidence-panel {
+  border-left: 1px solid var(--line);
+  background: rgba(58, 29, 19, 0.38);
+}
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 29px;
+}
+
+.section-title span {
+  color: var(--brass);
+  font-size: 11px;
+}
+
+.section-title h3 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.second {
+  margin-top: 38px;
+}
+
+/* =========================================================
+   FORM FIELDS
+   ========================================================= */
+
+.name-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.field-label {
+  display: block;
+  margin: 0 0 9px;
+  color: #bda48c;
+  font: 500 10px Oswald, sans-serif;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #68412d;
+  border-radius: 0;
+  outline: none;
+  background: #1b0d09;
+  color: var(--cream);
+  padding: 13px 14px;
+  font: 12px "DM Mono", monospace;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brass);
+  background: #24120c;
+  box-shadow: 0 0 0 2px rgba(191, 140, 59, 0.06);
+}
+
+select {
+  margin-top: 26px;
+  appearance: auto;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #735f51;
+}
+
+/* =========================================================
+   SMALL FORM HINT
+   ========================================================= */
+
+.character-hint {
+  margin-top: 9px;
+  color: #806c5b;
+  font-size: 9px;
+  font-style: italic;
+}
+
+/* =========================================================
+   UPLOAD
+   ========================================================= */
+
+.upload-zone {
+  display: flex;
+  min-height: 192px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed #805c38;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.upload-zone:hover {
+  border-color: var(--brass);
+  background: rgba(191, 140, 59, 0.07);
+  transform: translateY(-2px);
+}
+
+.upload-mark {
+  color: var(--brass);
+  font: 400 40px "Libre Baskerville", serif;
+}
+
+.upload-zone strong {
+  max-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: 14px "Libre Baskerville", serif;
+}
+
+.upload-zone small,
+.fine-print {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.upload-zone input {
+  display: none;
+}
+
+/* =========================================================
+   EVIDENCE RULE
+   ========================================================= */
+
+.evidence-rule {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 31px 0;
+  color: #87664b;
+  font: 9px Oswald, sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.evidence-rule span:nth-child(2) {
+  color: var(--brass);
+  font-size: 17px;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.gavel-button,
+.secondary-button {
+  width: 100%;
+  border: 1px solid var(--brass);
+  border-radius: 0;
+  cursor: pointer;
+  padding: 16px 18px;
+  font: 600 12px Oswald, sans-serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gavel-button {
+  display: flex;
+  justify-content: space-between;
+  background: var(--brass);
+  color: #180c07;
+}
+
+.gavel-button:hover:not(:disabled) {
+  background: var(--brass-light);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+}
+
+.gavel-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.gavel-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.gavel-button b {
+  font-size: 17px;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--brass);
+}
+
+.secondary-button:hover {
+  background: rgba(191, 140, 59, 0.1);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error-message {
+  margin: 0 0 16px;
+  border-left: 2px solid #bc5c45;
+  padding: 10px 12px;
+  color: #dc9d8b;
+  background: rgba(188, 92, 69, 0.06);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.error-message strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #e47c61;
+}
+
+/* =========================================================
+   VERDICT SCREEN
+   ========================================================= */
+
+.simple-verdict {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 55px auto 0;
+  padding-bottom: 60px;
+}
+
+/* =========================================================
+   VERDICT MAIN
+   ========================================================= */
+
+.verdict-main {
+  padding: 45px 35px 35px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(53, 26, 19, 0.75),
+      rgba(26, 12, 8, 0.85)
+    );
+  text-align: center;
+}
+
+.big-verdict {
+  margin-top: 14px;
+  font: 700 clamp(48px, 8vw, 88px) Oswald, sans-serif;
+  line-height: 1;
+  letter-spacing: 4px;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  animation: verdictPop 0.45s ease-out;
+}
+
+.big-verdict.is-guilty {
+  color: var(--danger);
+}
+
+.big-verdict.is-free {
+  color: var(--success);
+}
+
+@keyframes verdictPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.75) rotate(-3deg);
+  }
+
+  70% {
+    transform: scale(1.06) rotate(1deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+.charge-line {
+  max-width: 500px;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font: 15px "Libre Baskerville", serif;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   GUILT METER
+   ========================================================= */
+
+.compact-meter {
+  max-width: 500px;
+  margin: 30px auto 0;
+}
+
+.guilt-meter {
+  width: 100%;
+  text-align: left;
+}
+
+.meter-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 9px;
+  color: var(--brass);
+  font: 10px Oswald, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.meter-label strong {
+  color: var(--cream);
+  font-size: 14px;
+}
+
+.meter-track {
+  height: 9px;
+  overflow: hidden;
+  border: 1px solid #65432e;
+  background: #120806;
+}
+
+.meter-fill {
+  height: 100%;
+  transition: width 1s ease;
+}
+
+.meter-fill.is-guilty {
+  background: var(--danger);
+}
+
+.meter-fill.is-free {
+  background: var(--success);
+}
+
+/* =========================================================
+   ROAST CARD
+   ========================================================= */
+
+.roast-card {
+  position: relative;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid;
+  padding: 28px 32px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.roast-guilty {
+  border-color: rgba(208, 103, 77, 0.65);
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(208, 103, 77, 0.18),
+      transparent 45%
+    ),
+    rgba(53, 19, 13, 0.9);
+}
+
+.roast-not-guilty {
+  border-color: rgba(185, 170, 117, 0.55);
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(185, 170, 117, 0.13),
+      transparent 45%
+    ),
+    rgba(32, 32, 21, 0.9);
+}
+
+.roast-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.roast-fire {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  border: 1px solid rgba(191, 140, 59, 0.5);
+  background: rgba(191, 140, 59, 0.08);
+  font-size: 20px;
+}
+
+.roast-header h3 {
+  margin-top: 4px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.roast-text {
+  color: #e5d6bc;
+  font: 17px "Libre Baskerville", serif;
+  line-height: 1.75;
+}
+
+.roast-guilty .roast-text {
+  color: #f0c2b3;
+}
+
+.roast-not-guilty .roast-text {
+  color: #ddd9b7;
+}
+
+/* =========================================================
+   QUICK RULING
+   ========================================================= */
+
+.quick-ruling {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 25px 4px;
+}
+
+.quick-ruling .eyebrow {
+  margin-bottom: 11px;
+}
+
+.quick-ruling > div > p:last-child {
+  color: #e5d6bc;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.sentence {
+  color: #f0dfc2 !important;
+  font: 18px "Libre Baskerville", serif !important;
+  line-height: 1.7 !important;
+}
+
+.quick-ruling .fine {
+  color: var(--brass) !important;
+  font: 22px "Libre Baskerville", serif !important;
+}
+
+/* =========================================================
+   AUDIO
+   ========================================================= */
+
+.audio-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 9px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+.verdict-reset {
+  margin-top: 24px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .header-status {
+    display: none;
+  }
+
+  .intro-row,
+  .filing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-row {
+    gap: 25px;
+    padding: 50px 0 32px;
+  }
+
+  .form-panel,
+  .evidence-panel {
+    padding: 28px 22px;
+  }
+
+  .evidence-panel {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .name-grid,
+  .quick-ruling {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-ruling {
+    gap: 22px;
+  }
+
+  .verdict-main {
+    padding: 35px 20px 28px;
+  }
+
+  .roast-card {
+    padding: 24px 21px;
+  }
+
+  .guilt-meter {
+    margin-top: 25px;
+  }
+
+  .site-header h1 {
+    font-size: 21px;
+  }
+
+  .simple-verdict {
+    margin-top: 35px;
+  }
 }
