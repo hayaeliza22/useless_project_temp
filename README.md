@@ -108,24 +108,18 @@ http://localhost:3000
 For Software:
 
 # Screenshots
-<img width="1600" height="753" alt="1" src="https://github.com/user-attachments/assets/e9fd8269-f1a8-43e7-b460-ff27aabf26b1" />
-<img width="1600" height="416" alt="2" src="https://github.com/user-attachments/assets/8c4eeb8a-e642-41fa-b603-0af7f9285c59" />
-Caption:
+pictures
+
+Images 1 and 2 Caption:
 Petty Bench Homepage — The main courtroom interface where users can bring their most unnecessary grievances before the virtual judge.
 
-<img width="1600" height="722" alt="3" src="https://github.com/user-attachments/assets/66e4c7ef-8205-49bf-a37b-9d0ba3ddf296" />
-<img width="1600" height="555" alt="4" src="https://github.com/user-attachments/assets/26a479e7-8ae1-462e-a850-60ba1edf01dc" />
-Caption:
+Images 3 and 4 Caption:
 Filing a Petty Grievance — Users provide the plaintiff, defendant, nature of the dispute, and their version of events before commencing proceedings.
 
-<img width="1600" height="749" alt="5" src="https://github.com/user-attachments/assets/7d4b06d1-3468-42df-82ed-0aaee80d99c6" />
-<img width="1600" height="417" alt="6" src="https://github.com/user-attachments/assets/a55fd425-905d-4031-8543-2687ac3441e9" />
-Caption:
+Images 5 and 6 Caption:
 Courtroom Verdict — The AI judge analyzes the submitted grievance and delivers a dramatically serious verdict for an entirely unserious problem.
 
-<img width="1600" height="690" alt="7" src="https://github.com/user-attachments/assets/91851508-7ad7-4915-a356-3bf9c3f07692" />
-<img width="1600" height="541" alt="8" src="https://github.com/user-attachments/assets/533c4ad9-f4dc-4274-a608-1dec5513ee0a" />
-Caption:
+Images 7 and 8 Caption:
 Presenting the Evidence — Users can optionally submit evidence to support their case before the Petty Bench begins its deliberation.
 
 
