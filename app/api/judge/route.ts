@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { Verdict } from "@/lib/schema";
+import type { Verdict } from "@/shared/schema";
 
 export const runtime = "nodejs";
 
