@@ -6,9 +6,9 @@ import type { FormEvent } from "react";
 import {
   playGuiltySound,
   playNotGuiltySound,
-} from "@/lib/courtSounds";
+} from "@/frontend/courtSounds";
 
-import type { Verdict } from "@/lib/schema";
+import type { Verdict } from "@/shared/schema";
 
 const OFFENSES = [
   "Unwashed Dish Felony",
@@ -40,7 +40,7 @@ const OFFENSES = [
 export default function Home() {
   const [plaintiff, setPlaintiff] = useState("");
   const [defendant, setDefendant] = useState("");
-  const [offense, setOffense] = useState(OFFENSES[0]);
+  const [offense, setOffense] = useState<string>(OFFENSES[0]);
   const [complaint, setComplaint] = useState("");
   const [exhibit, setExhibit] = useState<File | null>(null);
 
